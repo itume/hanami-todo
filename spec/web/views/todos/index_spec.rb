@@ -1,13 +1,13 @@
 require_relative '../../../spec_helper'
 
 describe Web::Views::Todos::Index do
-  let(:exposures) { Hash[foo: 'bar'] }
+  let(:exposures) { Hash[todos: []] }
   let(:template)  { Hanami::View::Template.new('apps/web/templates/todos/index.html.erb') }
   let(:view)      { Web::Views::Todos::Index.new(template, exposures) }
   let(:rendered)  { view.render }
 
   it 'exposes #todo' do
-    view.todo.must_equal exposures.fetch(:todos)
+    view.todos.must_equal exposures.fetch(:todos)
   end
 
   describe 'when there are no todos' do

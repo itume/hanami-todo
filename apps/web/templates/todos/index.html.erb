@@ -1,11 +1,14 @@
 <h2>All todos</h2>
 
-<div id="todos">
-  <div class="todo">
-    <h3>getting startedの通りに進める</h3>
+<% if todos.any? %>
+  <div id="todos">
+    <% todos.each do |todo| %>
+      <div class="todo">
+        <h2><%= todo.title %></h2>
+        <p><%= todo.description %></p>
+      </div>
+    <% end %>
   </div>
-
-  <div class="todo">
-    <h3>viewにベタ書きしてるこれをなんとかする</h3>
-  </div>
-</div>
+<% else %>
+  <p class="placeholder">There are no todos yet.</p>
+<% end %>
